@@ -21,7 +21,7 @@ services:
     container_name: amazeeio-dnsmasq
     restart: always
     network_mode: bridge
-    command: -A 127.0.0.1
+    command: -A /docker.amazee.io/127.0.0.1
     cap_add:
       - NET_ADMIN
     ports:
