@@ -12,4 +12,4 @@ IF NOT EXIST "%KEY%" (
 	EXIT /B 1
 )
 
-docker run --rm -it --volume=%KEY%:/key --volumes-from=amazeeio-ssh-agent amazeeio/ssh-agent windows-key-add /key
+docker run --rm -it --volume="%KEY%":/key --volumes-from=amazeeio-ssh-agent amazeeio/ssh-agent windows-key-add /key
