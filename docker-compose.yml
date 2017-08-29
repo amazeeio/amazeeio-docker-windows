@@ -1,18 +1,24 @@
-# Create here the Drupal site you would like
 version: '2'
 services:
   amazeeio-ssh-agent:
     image: amazeeio/ssh-agent
     container_name: amazeeio-ssh-agent
     restart: always
-    network_mode: bridge
+    networks:
+      - default
+      - amazeeio-network
   amazeeio-haproxy:
     image: amazeeio/haproxy
     container_name: amazeeio-haproxy
     restart: always
-    network_mode: bridge
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      - default
+      - amazeeio-network
+networks:
+  amazeeio-network:
+    external: true
